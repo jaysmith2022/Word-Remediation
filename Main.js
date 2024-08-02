@@ -1,8 +1,13 @@
 const fs = require("fs");
+const path = require("path");
+const os = require("os");
 const { extractContent } = require("./Mammoth");
 const { analyzeAccessibility } = require("./Axios");
 
-const filePath = 'path_to_word_document.docx';
+
+const homeDir = os.homedir();
+const downloadsFolder = path.join(homeDir, 'Downloads');
+const filePath = path.join(downloadsFolder, 'path_to_word_document.docx');
 
 function generateReport(report) {
     fs.writeFile("accessibility_report.txt", report, (err) => {
